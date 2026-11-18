@@ -4,101 +4,160 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For Yogita ❤️</title>
+
 <style>
+* { box-sizing: border-box; }
+
 body {
   margin: 0;
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  font-family: Arial, sans-serif;
+  font-family: Georgia, serif;
   color: white;
+  text-align: center;
   background: linear-gradient(135deg,#ff758c,#ff7eb3,#a18cd1);
   overflow-x: hidden;
 }
+
 .card {
-  background: rgba(255,255,255,.18);
-  padding: 30px 22px;
-  margin: 20px;
-  border-radius: 25px;
-  box-shadow: 0 10px 40px #8d365566;
-  max-width: 390px;
+  width: min(90%, 420px);
+  padding: 35px 22px;
+  margin: 25px auto;
+  border: 1px solid #ffffff66;
+  border-radius: 28px;
+  background: #ffffff24;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 15px 45px #792d5a55;
 }
-h1 { color: #fff0f5; }
+
 .robot {
   font-size: 85px;
-  animation: bounce 1.5s infinite;
+  animation: bounce 2s infinite;
 }
+
 @keyframes bounce {
-  50% { transform: translateY(-12px); }
+  50% { transform: translateY(-13px); }
 }
+
+h1 {
+  font-size: 34px;
+  color: #fff5f8;
+}
+
+p {
+  line-height: 1.8;
+}
+
 button {
-  border: none;
+  border: 0;
   border-radius: 30px;
-  padding: 13px 22px;
-  margin: 8px;
-  font-size: 16px;
-  background: #fff;
-  color: #e84c82;
+  padding: 14px 23px;
+  margin: 10px 5px;
+  background: white;
+  color: #e94c83;
+  font-size: 15px;
+  font-weight: bold;
   cursor: pointer;
 }
-#message {
+
+#letter {
   display: none;
-  line-height: 1.7;
-  margin-top: 20px;
+  margin-top: 25px;
+  animation: appear 1.2s ease;
 }
+
+@keyframes appear {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
 .heart {
   position: fixed;
   bottom: -30px;
-  animation: float 5s linear infinite;
+  pointer-events: none;
+  animation: float 6s linear forwards;
 }
+
 @keyframes float {
-  to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+  to {
+    transform: translateY(-110vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+footer {
+  font-size: 12px;
+  margin-top: 25px;
+  opacity: .8;
 }
 </style>
 </head>
+
 <body>
+
 <div class="card">
+
   <div class="robot">🤖🌹</div>
+
   <h1>Hey Yogita ❤️</h1>
-  <p>Your little love robot has a message for you.</p>
 
-  <button onclick="surprise()">Open My Heart 💌</button>
-  <button onclick="playMusic()">Play Music 🎵</button>
+  <p>
+    A little surprise made with code,
+    just for someone special.
+  </p>
 
-  <audio id="song" src="music.mp3" loop></audio>
+  <button onclick="openLetter()">
+    Open My Heart 💌
+  </button>
 
-  <div id="message">
-    <h2>Dear Yogita 💗</h2>
+  <div id="letter">
+    <h2>Dear Yogita, 🌷</h2>
+
     <p>
-      If I could programme one beautiful thing
-      in this universe, it would be a smile
-      that never leaves your face.
+      In a world full of ordinary things,
+      you are my favourite little exception.
     </p>
-    <h3>You are my favourite person! 🌹</h3>
-    <p>With love, always ❤️</p>
+
+    <p>
+      I may not be a perfect programmer,
+      but if I could write one endless code,
+      it would be a program that keeps
+      you smiling forever.
+    </p>
+
+    <h2>You are special to me. ❤️</h2>
+
+    <p>Sending you a thousand virtual roses. 🌹</p>
   </div>
+
+  <footer>
+    Made with love, one line of code at a time ❤️
+  </footer>
+
 </div>
 
 <script>
-function surprise() {
-  document.getElementById("message").style.display = "block";
+function openLetter() {
+  document.getElementById("letter").style.display = "block";
+  for (let i = 0; i < 25; i++) {
+    setTimeout(createHeart, i * 100);
+  }
 }
 
-function playMusic() {
-  document.getElementById("song").play();
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerHTML = ["❤️","💕","💗","🌹"][Math.floor(Math.random()*4)];
+  heart.style.left = Math.random() * 100 + "vw";
+  heart.style.fontSize = (18 + Math.random()*22) + "px";
+  document.body.appendChild(heart);
+  setTimeout(() => heart.remove(), 6000);
 }
 
-setInterval(() => {
-  let h = document.createElement("div");
-  h.className = "heart";
-  h.innerHTML = "❤️";
-  h.style.left = Math.random() * 100 + "vw";
-  h.style.fontSize = (15 + Math.random()*25) + "px";
-  document.body.appendChild(h);
-  setTimeout(() => h.remove(), 5000);
-}, 500);
+setInterval(createHeart, 900);
 </script>
+
 </body>
 </html>
