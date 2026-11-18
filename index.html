@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For Yogita ❤️</title>
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  background: linear-gradient(135deg,#ff758c,#ff7eb3,#a18cd1);
+  overflow-x: hidden;
+}
+.card {
+  background: rgba(255,255,255,.18);
+  padding: 30px 22px;
+  margin: 20px;
+  border-radius: 25px;
+  box-shadow: 0 10px 40px #8d365566;
+  max-width: 390px;
+}
+h1 { color: #fff0f5; }
+.robot {
+  font-size: 85px;
+  animation: bounce 1.5s infinite;
+}
+@keyframes bounce {
+  50% { transform: translateY(-12px); }
+}
+button {
+  border: none;
+  border-radius: 30px;
+  padding: 13px 22px;
+  margin: 8px;
+  font-size: 16px;
+  background: #fff;
+  color: #e84c82;
+  cursor: pointer;
+}
+#message {
+  display: none;
+  line-height: 1.7;
+  margin-top: 20px;
+}
+.heart {
+  position: fixed;
+  bottom: -30px;
+  animation: float 5s linear infinite;
+}
+@keyframes float {
+  to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="robot">🤖🌹</div>
+  <h1>Hey Yogita ❤️</h1>
+  <p>Your little love robot has a message for you.</p>
+
+  <button onclick="surprise()">Open My Heart 💌</button>
+  <button onclick="playMusic()">Play Music 🎵</button>
+
+  <audio id="song" src="music.mp3" loop></audio>
+
+  <div id="message">
+    <h2>Dear Yogita 💗</h2>
+    <p>
+      If I could programme one beautiful thing
+      in this universe, it would be a smile
+      that never leaves your face.
+    </p>
+    <h3>You are my favourite person! 🌹</h3>
+    <p>With love, always ❤️</p>
+  </div>
+</div>
+
+<script>
+function surprise() {
+  document.getElementById("message").style.display = "block";
+}
+
+function playMusic() {
+  document.getElementById("song").play();
+}
+
+setInterval(() => {
+  let h = document.createElement("div");
+  h.className = "heart";
+  h.innerHTML = "❤️";
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.fontSize = (15 + Math.random()*25) + "px";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 5000);
+}, 500);
+</script>
+</body>
+</html>
